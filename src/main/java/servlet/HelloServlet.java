@@ -19,7 +19,29 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         ServletOutputStream out = resp.getOutputStream();
-        out.write("hello heroku".getBytes());
+        
+        
+        String res ="<html>\n" + 
+        		"<head>\n" + 
+        		"<title>dude</title>\n" + 
+        		"</head>\n" + 
+        		"<body>\n" + 
+        		"	<h2>hell yea</h2>"
+        		+ "<center>\n";
+        		
+        for(int i=0; i<800; i++) {
+            for(int j=0; j<i%(100+j); j++) {
+            	if(Math.random()>0.5)
+            		res+=" x ";
+            	else
+            		res+=" - ";
+            }
+            res+="<br>\n";
+        }
+        res+="</center>"
+        		+ "</body>\n" + 
+        		"</html>";
+        out.write(res.getBytes());
         out.flush();
         out.close();
     }
